@@ -1,0 +1,67 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# Virtual Environments
+venv/
+.venv/
+env/
+.env/
+.envrc
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test and coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Operating System temporary files
+.DS_Store
+Thumbs.db
+
+# Data/Log files
+*.log
+*.sqlite
+db.sqlite3
+
+# Secret/Configuration files
+secrets.toml
+config.json
+
