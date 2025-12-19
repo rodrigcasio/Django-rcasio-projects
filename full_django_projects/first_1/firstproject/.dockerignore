@@ -1,0 +1,21 @@
+# Ignore the virtual environment
+.venv/
+venv/
+env/
+
+# Ignore Python cache files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore the local database (so you start fresh in the container)
+*.sqlite3
+
+# Ignore Git metadata
+.git/
+.gitignore
+
+# Ignore Docker's own config
+.dockerignore
+Dockerfile
