@@ -8,7 +8,7 @@ Learn `admin site` provided by Django to manage models.
     - (`StackedInline`) to manage `Lesson` objects directly within the `Course` management page.
   - Implement a custom registration process for different user roles (`Instructors` and `Learners`).
 
-In this project is it necesary to create a `Superuser` account to manage the app
+In this project it is necesary to create a `Superuser` account to manage the app
 This project is linked to a created `PostgreSQL` database within my local machine to visualize and manage the registrations of the Course and Instructor sections within the `ADMINSITE` section when running the app.
 
 ## Dockerizaton & Portability
