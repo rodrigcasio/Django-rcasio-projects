@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-b^7#m1i1+(*2!ozgb%s79@c92xp0%m=-sv=^$npgaf5&heg5wl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]  # This allows to access Django site from browser even thought it's running inside the Docker network
+ALLOWED_HOSTS = ['*']  # This allows to access Django site from browser even thought it's running inside the Docker network
 
 
 # Application definition
