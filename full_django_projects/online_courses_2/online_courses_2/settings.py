@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-b^7#m1i1+(*2!ozgb%s79@c92xp0%m=-sv=^$npgaf5&heg5wl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]  # This allows to access Django site from browser even thought it's running inside the Docker network
 
 
 # Application definition
@@ -73,17 +73,24 @@ WSGI_APPLICATION = 'online_courses_2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
+# if the enviroment variable 'DOCKER_RUNNING' exists, use the Docker IP.
+#  otherwise, use localhost for my virtual env
+if os.environ.get('DOCKER_RUNNING'):
+    DB_HOST = '172.17.0.1'
+else:
+    DB_HOST = 'localhost'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # own database within Arch database
         'NAME': 'onlinecourse_db',
         'USER': 'adminsite_user',
         'PASSWORD': 'Kumon7700',
-        'HOST': 'localhost',
+        'HOST': DB_HOST,
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -120,3 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
