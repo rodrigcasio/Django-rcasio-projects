@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'online_courses_2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',  # own database within Arch database
+        'NAME': 'onlinecourse_db',
+        'USER': 'adminsite_user',
+        'PASSWORD': 'Kumon7700',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
