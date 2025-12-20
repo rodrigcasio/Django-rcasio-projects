@@ -20,11 +20,11 @@ it has dynamic config which uses the `DOCKER_RUNNING` enviroment variable to tog
 # How to run
 
 1. Ensure PostgreSQL is running on your host machine
-2. Run the container:
+2. Run the container:   (currently no working but succesfully created image and pushed in my Docker Hub)
   (`docker run -p 8000:8000 rodrigocasio/online-course-admin:v1`)
 3. Access the admin panel at `http://localhost:8000/admin`
 
-# HOW TO RUN localhost with database
+# HOW TO RUN localhost with database 
 install all the packages within a virtual enviroment:
 (local PostgreSQL db need to be active)
 `python manage.py runserver`
