@@ -17,5 +17,12 @@ This poject is containerized for easy deployment across any enviroment.
 - Image: `rodrigocasio/online-course-admin:v1`
 it has dynamic config which uses the `DOCKER_RUNNING` enviroment variable to toggle between `localhost` and the Docker host IP (`172.17.0.1`) for database connectivity
 
+# How to run
+
+1. Ensure PostgreSQL is running on your host machine
+2. Run the container:
+  (`docker run -p 8000:8000 rodrigocasio/online-course-admin:v1`)
+3. Access the admin panel at `http://localhost:8000/admin`
+
 @rodrigcasio
 
