@@ -24,5 +24,10 @@ it has dynamic config which uses the `DOCKER_RUNNING` enviroment variable to tog
   (`docker run -p 8000:8000 rodrigocasio/online-course-admin:v1`)
 3. Access the admin panel at `http://localhost:8000/admin`
 
+# HOW TO RUN localhost with database
+install all the packages within a virtual enviroment:
+(local PostgreSQL db need to be active)
+`python manage.py runserver`
+
 @rodrigcasio
 
