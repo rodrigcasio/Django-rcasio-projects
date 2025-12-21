@@ -33,7 +33,7 @@ def popular_course_list(request):
 # 2 
 def enroll(request, course_id):
     if request.method == 'POST':
-        course = get_object_or_404(Course, pk=course.id)     # if it cannot be found
+        course = get_object_or_404(Course, pk=course_id)     # if it cannot be found
 
         course.total_enrollment += 1
         course.save()
