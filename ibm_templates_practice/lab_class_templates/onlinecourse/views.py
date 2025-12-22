@@ -20,6 +20,15 @@ from django.http import Http404
 #        context['course_list'] = course_list
 #        return render(request, 'onlinecourse/course_list_no_css.html', context)
 
+# Function-based enroll view
+# def enroll(request, course_id):
+#    if request.method == 'POST':
+#       course = get_object_or_404(Course, pk=course_id)
+#       # Create an enrollment
+#       course.total_enrollment += 1
+#       course.save()
+#       return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
+
 # Function-based course_details view
 # def course_details(request, course_id):
 #    context = {}
@@ -30,15 +39,6 @@ from django.http import Http404
 #            return render(request, 'onlinecourse/course_detail.html', context)
 #        except Course.DoesNotExist:
 #            raise Http404("No course matches the given id.")
-
-# Function-based enroll view
-# def enroll(request, course_id):
-#    if request.method == 'POST':
-#       course = get_object_or_404(Course, pk=course_id)
-#       # Create an enrollment
-#       course.total_enrollment += 1
-#       course.save()
-#       return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
 
 class CourseListView(View):
     def get(self, request):
@@ -56,6 +56,16 @@ class EnrollView(View):
         course.save()
         return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
 
+class CourseDetailsView(View):
+    def get(self, request, *args, **kwargs):
+        context = {}
+        course_id = kwargs.get('pk')    # getting URL parameter pk from keyword argument list as course_id
+        try:
+            course = Course.objects.get(pk=course_id)
+            context['course'] = course
+            return render(request,'onlinecourse/course_details.html', context)
+        except Course.DoesNotExist:
+            raise Http404('No course matches the given id.')
 
 
 
