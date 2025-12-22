@@ -10,6 +10,7 @@ from django.http import Http404
 
 
 
+""" --- Function-based views --- """
 # Function based views commented out to recreate them with classbased views
 
 # Function-based course list view
@@ -40,12 +41,13 @@ from django.http import Http404
 #        except Course.DoesNotExist:
 #            raise Http404("No course matches the given id.")
 
-class CourseListView(View):
-    def get(self, request):
-        context = {}
-        course_list = Course.objects.order_by('-total_enrollment')[:10]
-        context['course_list'] = course_list
-        return render(request, 'onlinecourse/course_list.html', context)
+""" --- Class-based views ---  (Commented out to use Generic built-in Views"""
+# class CourseListView(View):
+#     def get(self, request):
+#         context = {}
+#         course_list = Course.objects.order_by('-total_enrollment')[:10]
+#         context['course_list'] = course_list
+#         return render(request, 'onlinecourse/course_list.html', context)
 
 class EnrollView(View):
         # handle the post request
@@ -56,16 +58,33 @@ class EnrollView(View):
         course.save()
         return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
 
-class CourseDetailsView(View):
-    def get(self, request, *args, **kwargs):
-        context = {}
-        course_id = kwargs.get('pk')    # getting URL parameter pk from keyword argument list as course_id
-        try:
-            course = Course.objects.get(pk=course_id)
-            context['course'] = course
-            return render(request,'onlinecourse/course_details.html', context)
-        except Course.DoesNotExist:
-            raise Http404('No course matches the given id.')
+# class CourseDetailsView(View):
+#     def get(self, request, *args, **kwargs):
+#         context = {}
+#         course_id = kwargs.get('pk')    # getting URL parameter pk from keyword argument list as course_id
+#         try:
+#             course = Course.objects.get(pk=course_id)
+#             context['course'] = course
+#             return render(request,'onlinecourse/course_details.html', context)
+#         except Course.DoesNotExist:
+#             raise Http404('No course matches the given id.')
+
+""" --- Class-based views --- """
+class CourseListView(generic.ListView): # CourseListView inherits from ListView many useful methods to quickly build a list view
+    template_name = 'onlinecourse/course_list.html'
+    context_object_name = 'course_list'
+    
+    # Override get_queryset() to provide list of objects
+    def get_queryset(self):
+        courses = Course.objects.order_by('-total_enrollment')[:10]
+        return courses # list obtain will be append into the context called 'course_list' automatically!
+
+# only need for inheriting from 'DetailView', we only need model and template name:
+class CourseDetailsView(generic.DetailView):
+    model = Course
+    template_name = 'onlinecourse/course_details'
+
+
 
 
 
