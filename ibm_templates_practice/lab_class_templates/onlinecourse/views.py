@@ -47,6 +47,15 @@ class CourseListView(View):
         context['course_list'] = course_list
         return render(request, 'onlinecourse/course_list.html', context)
 
+class EnrollView(View):
+        # handle the post request
+    def post(self, request, *args, **kwargs):
+        course_id = kwargs.get('pk')
+        course = get_object_or_404(Course, course_id)
+        course.total_enrollment += 1
+        course.save()
+        return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
+
 
 
 
