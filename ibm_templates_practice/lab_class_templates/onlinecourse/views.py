@@ -10,7 +10,7 @@ from django.http import Http404
 
 
 
-# Function based views
+# Function based views commented out to recreate them with classbased views
 
 # Function-based course list view
 # def popular_course_list(request):
@@ -39,3 +39,14 @@ from django.http import Http404
 #       course.total_enrollment += 1
 #       course.save()
 #       return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
+
+class CourseListView(View):
+    def get(self, request):
+        context = {}
+        course_list = Course.objects.order_by('-total_enrollment')[:10]
+        context['course_list'] = course_list
+        return render(request, 'onlinecourse/course_list.html', context)
+
+
+
+
