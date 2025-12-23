@@ -7,8 +7,15 @@
     <title>Online Courses</title>
 </head>
 <body>
-{% if user.is_authenticated %}  <!-- an if tag -->
-<p>Username: {{user.username}}, First name: {{user.first_name}}, Last name: {{user.last_name}} </p>
+{% if user.is_authenticated %}  <!-- 1. an if tag  2. Adding a logout dropdown button -->
+  <div class="rightalign">
+    <div class="dropdown">
+      <button class="dropbtn">{{user.first_name}}</button>
+      <div class="dropdown-content">
+        <a href="{% url 'onlinecourse:logout' %}">Logout</a>
+      </div>
+    </div>
+  </div>
 {% endif %}
 <h2>Popular courses list</h2>
 <hr>

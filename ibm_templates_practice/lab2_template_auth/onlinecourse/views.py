@@ -12,8 +12,10 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-# Create authentication related views
-
+def logout_request(request):
+    print(f"Log out the user  {request.user.username}")
+    logout(request)
+    return redirect('onlinecourse:popular_course_list') # <-- this is from the `urls.py` route paths
 
 
 # Add a class-based course list view
