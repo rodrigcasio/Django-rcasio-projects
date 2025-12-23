@@ -33,6 +33,31 @@ def login_request(request):
     else:
         return render(request, 'onlinecourse/user_login.html', context)
 
+def registration_request(request):
+    context = {}
+    if request.method == 'GET':
+        return render(request, 'onlinecourse/user_registration.html', context)
+
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['pwd']
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        user_exist = False
+
+        try:
+            User.objects.get(username=username) # check if it already exits
+            user_exist = True
+        except:
+            logger.debug(f"{username} is a new user")
+
+        if not user_exist:
+            # create user in auth_user table
+            user = User.objects.create_user(username=username, first_name=firstname, last_name=lastname, password=password)
+            login(request, user)
+            return redirect('onlinecourse:popular_course_list')
+        else:
+            return render(request, 'onlinecourse/user_registration.html', context)
 
 
 # Add a class-based course list view
