@@ -12,6 +12,7 @@ urlpatterns = [
 
     # Authentication related urls
     path(route='logout/', view=views.logout_request, name='logout'),
+    path(route='login/', view=views.login_request, name='login'),
 	
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
