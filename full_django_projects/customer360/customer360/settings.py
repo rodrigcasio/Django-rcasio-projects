@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,10 @@ SECRET_KEY = 'django-insecure-)x8q*xlf8dnwmzo$)@h71fiii#z2hyjtnk!7^y@)tq+y80yl$4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.cognitiveclass.ai'] # a list of origins for unsafe requests
+
 
 
 # Application definition
@@ -37,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'customer360'
 ]
 
 MIDDLEWARE = [
@@ -115,3 +120,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Configure Additional Static files Directory
+# -  This setting defines the additional location for 'staticfiles' app will traverse if the 'FileSystemFinder' finder is enabled
+# - e.g: if used the 'collectstatic' or 'findstatic' management command or use the static file serving view
+STATICFILES_DIR = (
+    os.path.join(BASE_DIR, 'static/'),
+)
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
