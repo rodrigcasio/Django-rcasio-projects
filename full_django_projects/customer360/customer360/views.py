@@ -11,7 +11,7 @@ def index(request):
 
 # 2 
 def create_customer(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         name = request.POST["name"]
         email = request.POST["email"]
         phone = request.POST["phone"]
@@ -26,7 +26,7 @@ def create_customer(request):
 # 3
 def summary(request):
     thirty_days_ago = date.today() - timedelta(days=30)
-    interactions = Interaction.objects.filter(interactions_date__gte=thirty_days_ago)
+    interactions = Interaction.objects.filter(interaction_date__gte=thirty_days_ago)
 
     count = len(interactions)
     interactions = interactions.values("channel", "direction").annotate(count=Count('channel'))
