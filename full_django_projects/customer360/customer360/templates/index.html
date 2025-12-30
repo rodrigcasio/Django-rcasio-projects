@@ -6,7 +6,7 @@
     <title>Home Page</title>
   </head>
   <script>
-    function set_customer(){
+    const set_customer = () => {
       var cinput = document.querySelector('input[name="selected_customers"]:checked');
       if (cinput) {
         cid = cinput.value;
