@@ -11,7 +11,7 @@ def index(request):
 
 # 2 
 def create_customer(request):
-    if request.method = 'POST':
+    if request.method == 'POST':
         name = request.POST["name"]
         email = request.POST["email"]
         phone = request.POST["phone"]
