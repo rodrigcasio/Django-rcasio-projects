@@ -44,7 +44,7 @@ def interact(request, cid):
     directions = Interaction.DIRECTION_CHOICES
     context = {"channel":channels, "directions":directions}
 
-    if request.method = "POST":
+    if request.method == "POST":
         customer = Customer.objects.get(id=cid)
         channel = request.POST["channel"]
         direction = request.POST["directions"]
