@@ -6,7 +6,7 @@ from . models import *
 # 1 
 def index(request):
     customers = Customer.objects.all()
-    context = {"customer": customers}
+    context = {"customers": customers}
     return render(request, "index.html", context=context)
 
 # 2 
@@ -41,7 +41,7 @@ def summary(request):
 def interact(request, cid):
     channels = Interaction.CHANNEL_CHOICES
     directions = Interaction.DIRECTION_CHOICES
-    context = {"channel":channels, "directions":directions}
+    context = {"channels":channels, "directions":directions}
 
     if request.method == "POST":
         customer = Customer.objects.get(id=cid)
