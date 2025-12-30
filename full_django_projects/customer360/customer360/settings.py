@@ -124,7 +124,7 @@ STATIC_URL = 'static/'
 # Configure Additional Static files Directory
 # -  This setting defines the additional location for 'staticfiles' app will traverse if the 'FileSystemFinder' finder is enabled
 # - e.g: if used the 'collectstatic' or 'findstatic' management command or use the static file serving view
-STATICFILES_DIR = (
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
 
