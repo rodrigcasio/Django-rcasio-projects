@@ -7,7 +7,7 @@
   </head>
   <script>
     const selectButton = (element) => {
-      var buttons = element.parentElement.getElementByClassName("btn");
+      var buttons = element.parentElement.getElementsByClassName("btn");
       for (var i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove("active");
       }
@@ -27,7 +27,7 @@
     }
   </script>
   <body>
-    <h1>Interact With Your Customer</h1>
+    <h1>Interact With Your Customers</h1>
     <form class="form" method="post" onsumbit="return check_selected()" action="#">
       {% csrf_token %}
       <div class="form-group">
